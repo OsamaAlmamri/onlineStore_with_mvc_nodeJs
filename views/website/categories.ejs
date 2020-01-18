@@ -1,0 +1,445 @@
+<%- include('include/header'); %>
+<link rel="stylesheet" type="text/css" href="/assets/website/styles/categories.css">
+<link rel="stylesheet" type="text/css" href="/assets/website/styles/categories_responsive.css">
+<link rel="stylesheet" type="text/css" href="/assets/website/styles/osama/custom.css">
+
+</head>
+
+<body>
+<div class="super_container">
+
+    <%- include('include/navbar'); %>
+    <%- include('include/slider'); %>
+
+
+    <!-- Home -->
+
+    <div class="home">
+        <div class="parallax_background parallax-window" data-parallax="scroll"
+             data-image-src="/assets/website/images/categories.jpg" data-speed="0.8"></div>
+        <div class="home_container">
+            <div class="home_content">
+                <div class="home_title">Shop</div>
+                <div class="breadcrumbs">
+                    <ul class="d-flex flex-row align-items-center justify-content-start">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="#">Woman</a></li>
+                        <li>Accessories</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Products -->
+
+    <div class="products">
+
+        <!-- Sorting & Filtering -->
+        <div class="products_bar">
+            <div class="section_container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="products_bar_content d-flex flex-column flex-xxl-row align-items-start align-items-xxl-center justify-content-start">
+                                <div class="product_categories">
+                                    <ul class="d-flex flex-row align-items-start justify-content-start flex-wrap">
+                                        <li class="active"><a href="#">All</a></li>
+                                        <li><a href="#">Hot Products</a></li>
+                                        <li><a href="#">New Products</a></li>
+                                        <li><a href="#">Sale Products</a></li>
+                                    </ul>
+                                </div>
+                                <div class="products_bar_side ml-xxl-auto d-flex flex-row align-items-center justify-content-start">
+                                    <div class="products_dropdown product_dropdown_sorting">
+                                        <div class="isotope_sorting_text"><span>Default Sorting</span><i
+                                                    class="fa fa-caret-down" aria-hidden="true"></i></div>
+                                        <ul>
+                                            <li class="item_sorting_btn"
+                                                data-isotope-option='{ "sortBy": "original-order" }'>Default
+                                            </li>
+                                            <li class="item_sorting_btn" data-isotope-option='{ "sortBy": "price" }'>
+                                                Price
+                                            </li>
+                                            <li class="item_sorting_btn" data-isotope-option='{ "sortBy": "name" }'>
+                                                Name
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="product_view d-flex flex-row align-items-center justify-content-start">
+                                        <div class="view_item active"><img src="/assets/website/images/view_1.png"
+                                                                           alt=""></div>
+                                        <div class="view_item"><img src="/assets/website/images/view_2.png" alt="">
+                                        </div>
+                                        <div class="view_item"><img src="/assets/website/images/view_3.png" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                        <form action="categories" method="grt" class="search_form" id="sidebar_search_form">
+                                            <input name="category" type="text" class="search_input" style="color: #0b2e13" placeholder="Search" required="required">
+                                            <button class="search_button"><i style="color: #0b2e13" class="fa fa-search" aria-hidden="true"></i></button>
+                                        </form>
+                                    </div>
+
+                                    <div class="products_dropdown text-right product_dropdown_filter">
+                                        <div class="isotope_filter_text"><span>Filter</span><i class="fa fa-caret-down"
+                                                                                               aria-hidden="true"></i>
+                                        </div>
+                                        <ul>
+                                            <li class="item_filter_btn" data-filter="*">All</li>
+                                            <li class="item_filter_btn" data-filter=".hot">Hot</li>
+                                            <li class="item_filter_btn" data-filter=".new">New</li>
+                                            <li class="item_filter_btn" data-filter=".sale">Sale</li>
+                                            <li class="item_filter_btn" data-filter=".mmm">mmm</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section_container">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="products_container grid">
+
+                            <% for ( let product of products ) { %>
+                                <!-- Product -->
+                                <div class="product grid-item hot">
+                                    <div class="product_inner">
+                                        <div class="product_image">
+                                            <img src="<%= product.image[0] %>" alt="">
+                                            <div class="product_tag">hot</div>
+                                        </div>
+                                        <div class="product_content text-center">
+                                            <div class="product_title"><a href="/product/<%= product._id %>"><%= product.name %> </a></div>
+                                            <div class="product_price">$<%= product.price %> </div>
+                                            <div class="product_button ml-auto mr-auto trans_200"><a class="addToCart">add
+                                                    to cart</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% } %>
+
+                            <!-- Product -->
+                            <div class="product grid-item">
+                                <div class="product_inner">
+                                    <div class="product_image"><img src="/assets/website/images/product_2.jpg" alt="">
+                                    </div>
+                                    <div class="product_content text-center">
+                                        <div class="product_title"><a href="/product">hype grey shirt</a></div>
+                                        <div class="product_price">$19.50</div>
+                                        <div class="product_button ml-auto mr-auto trans_200"><a href="#">add to
+                                                cart</a></div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- Product -->
+                            <div class="product grid-item sale">
+                                <div class="product_inner">
+                                    <div class="product_image">
+                                        <img src="/assets/website/images/product_3.jpg" alt="">
+                                        <div class="product_tag">sale</div>
+                                    </div>
+                                    <div class="product_content text-center">
+                                        <div class="product_title"><a href="/product">long sleeve jacket</a></div>
+                                        <div class="product_price">$32.20<span>RRP 64.40</span></div>
+                                        <div class="product_button ml-auto mr-auto trans_200"><a href="#">add to
+                                                cart</a></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Product -->
+                            <div class="product grid-item">
+                                <div class="product_inner">
+                                    <div class="product_image">
+                                        <img src="/assets/website/images/product_4.jpg" alt="">
+                                    </div>
+                                    <div class="product_content text-center">
+                                        <div class="product_title"><a href="/product">denim men shirt</a></div>
+                                        <div class="product_price">$59.90</div>
+                                        <div class="product_button ml-auto mr-auto trans_200"><a href="#">add to
+                                                cart</a></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Product -->
+                            <div class="product grid-item">
+                                <div class="product_inner">
+                                    <div class="product_image">
+                                        <img src="/assets/website/images/product_5.jpg" alt="">
+                                    </div>
+                                    <div class="product_content text-center">
+                                        <div class="product_title"><a href="/product">long red shirt</a></div>
+                                        <div class="product_price">$79.90</div>
+                                        <div class="product_button ml-auto mr-auto trans_200"><a href="#">add to
+                                                cart</a></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Product -->
+                            <div class="product grid-item new">
+                                <div class="product_inner">
+                                    <div class="product_image">
+                                        <img src="/assets/website/images/product_6.jpg" alt="">
+                                        <div class="product_tag">new</div>
+                                    </div>
+                                    <div class="product_content text-center">
+                                        <div class="product_title"><a href="/product">hype grey shirt</a></div>
+                                        <div class="product_price">$59.90</div>
+                                        <div class="product_button ml-auto mr-auto trans_200"><a href="#">add to
+                                                cart</a></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Product -->
+                            <div class="product grid-item">
+                                <div class="product_inner">
+                                    <div class="product_image">
+                                        <img src="/assets/website/images/product_7.jpg" alt="">
+                                    </div>
+                                    <div class="product_content text-center">
+                                        <div class="product_title"><a href="/product">long sleeve jacket</a></div>
+                                        <div class="product_price">$15.90</div>
+                                        <div class="product_button ml-auto mr-auto trans_200"><a href="#">add to
+                                                cart</a></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Product -->
+                            <div class="product grid-item sale">
+                                <div class="product_inner">
+                                    <div class="product_image">
+                                        <img src="/assets/website/images/product_8.jpg" alt="">
+                                        <div class="product_tag">sale</div>
+                                    </div>
+                                    <div class="product_content text-center">
+                                        <div class="product_title"><a href="/product">denim men shirt</a></div>
+                                        <div class="product_price">$43.99<span>RRP 64.40</span></div>
+                                        <div class="product_button ml-auto mr-auto trans_200"><a href="#">add to
+                                                cart</a></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Product -->
+                            <div class="product grid-item hot">
+                                <div class="product_inner">
+                                    <div class="product_image">
+                                        <img src="/assets/website/images/product_9.jpg" alt="">
+                                        <div class="product_tag">hot</div>
+                                    </div>
+                                    <div class="product_content text-center">
+                                        <div class="product_title"><a href="/product">long red shirt</a></div>
+                                        <div class="product_price">$39.90</div>
+                                        <div class="product_button ml-auto mr-auto trans_200"><a href="#">add to
+                                                cart</a></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Product -->
+                            <div class="product grid-item">
+                                <div class="product_inner">
+                                    <div class="product_image"><img src="/assets/website/images/product_10.jpg" alt="">
+                                    </div>
+                                    <div class="product_content text-center">
+                                        <div class="product_title"><a href="/product">hype grey shirt</a></div>
+                                        <div class="product_price">$19.50</div>
+                                        <div class="product_button ml-auto mr-auto trans_200"><a href="#">add to
+                                                cart</a></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Product -->
+                            <div class="product grid-item sale">
+                                <div class="product_inner">
+                                    <div class="product_image">
+                                        <img src="/assets/website/images/product_11.jpg" alt="">
+                                        <div class="product_tag">sale</div>
+                                    </div>
+                                    <div class="product_content text-center">
+                                        <div class="product_title"><a href="/product">long sleeve jacket</a></div>
+                                        <div class="product_price">$32.20<span>RRP 64.40</span></div>
+                                        <div class="product_button ml-auto mr-auto trans_200"><a href="#">add to
+                                                cart</a></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Product -->
+                            <div class="product grid-item">
+                                <div class="product_inner">
+                                    <div class="product_image">
+                                        <img src="/assets/website/images/product_12.jpg" alt="">
+                                    </div>
+                                    <div class="product_content text-center">
+                                        <div class="product_title"><a href="/product">denim men shirt</a></div>
+                                        <div class="product_price">$59.90</div>
+                                        <div class="product_button ml-auto mr-auto trans_200"><a href="#">add to
+                                                cart</a></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Product -->
+                            <div class="product grid-item hot">
+                                <div class="product_inner">
+                                    <div class="product_image">
+                                        <img src="/assets/website/images/product_13.jpg" alt="">
+                                        <div class="product_tag">hot</div>
+                                    </div>
+                                    <div class="product_content text-center">
+                                        <div class="product_title"><a href="/product">long red shirt</a></div>
+                                        <div class="product_price">$39.90</div>
+                                        <div class="product_button ml-auto mr-auto trans_200"><a href="#">add to
+                                                cart</a></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Product -->
+                            <div class="product grid-item new">
+                                <div class="product_inner">
+                                    <div class="product_image">
+                                        <img src="/assets/website/images/product_14.jpg" alt="">
+                                        <div class="product_tag">new</div>
+                                    </div>
+                                    <div class="product_content text-center">
+                                        <div class="product_title"><a href="/product">hype grey shirt</a></div>
+                                        <div class="product_price">$19.50</div>
+                                        <div class="product_button ml-auto mr-auto trans_200"><a href="#">add to
+                                                cart</a></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Product -->
+                            <div class="product grid-item sale">
+                                <div class="product_inner">
+                                    <div class="product_image">
+                                        <img src="/assets/website/images/product_15.jpg" alt="">
+                                        <div class="product_tag">sale</div>
+                                    </div>
+                                    <div class="product_content text-center">
+                                        <div class="product_title"><a href="/product">long sleeve jacket</a></div>
+                                        <div class="product_price">$32.20<span>RRP 64.40</span></div>
+                                        <div class="product_button ml-auto mr-auto trans_200"><a href="#">add to
+                                                cart</a></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Product -->
+                            <div class="product grid-item">
+                                <div class="product_inner">
+                                    <div class="product_image">
+                                        <img src="/assets/website/images/product_16.jpg" alt="">
+                                    </div>
+                                    <div class="product_content text-center">
+                                        <div class="product_title"><a href="/product">denim men shirt</a></div>
+                                        <div class="product_price">$59.90</div>
+                                        <div class="product_button ml-auto mr-auto trans_200"><a href="#">add to
+                                                cart</a></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <%- include('include/footer'); %>
+    <script src="/assets/website/js/categories.js"></script>
+    <script>
+
+        function AddProductToCart(product) {
+            if ($(document).width() >= 1183)
+                var cart = $('.cart_icon').eq(1);
+            else
+                var cart = $('.cart_icon').eq(0);
+
+            var imgtodrag = product.parent().parent().prev().find("img").eq(0);
+            var imageSrc = imgtodrag.attr('src');
+            if (imgtodrag) {
+                var imgclone = imgtodrag.clone()
+                    .offset({
+                        top: imgtodrag.offset().top,
+                        left: imgtodrag.offset().left
+                    })
+                    .css({
+                        'opacity': '0.5',
+                        'position': 'absolute',
+                        'height': '150px',
+                        'width': '150px',
+                        'z-index': '100'
+                    })
+                    .appendTo($('body'))
+                    .animate({
+                        'top': cart.offset().top + 10,
+                        'left': cart.offset().left + 10,
+                        'width': 75,
+                        'height': 75
+                    }, 1000, 'easeInOutExpo');
+
+                setTimeout(function () {
+                    cart.effect("shake", {
+                        times: 2
+                    }, 200);
+                }, 1500);
+
+                imgclone.animate({
+                    'width': 0,
+                    'height': 0
+                }, function () {
+                    // product.detach()
+                });
+            }
+
+            // var imgSelected = product.parent('.product-item').find("img").eq(1);
+
+            setTimeout(function () {
+                // imgSelected.addClass('image_selected_active');
+            }, 1000);
+            // var price = product.parent('.product-item').find("span").eq(0);
+            // var name = product.parent('.product-item').find("p").eq(0);
+            // myProdact[name.text().trim()] = ({
+            //     name: name.text().trim(),
+            //     price: price.text().trim(),
+            //     count: 1,
+            //     src: imageSrc
+            // });
+        }
+
+
+        $(document).on('click', '.addToCart', function (event) {
+            event.preventDefault();
+            AddProductToCart($(this));
+
+
+        })
+
+
+    </script>
+
+</body>
+</html>
+
+
+
+

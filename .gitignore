@@ -1,0 +1,9 @@
+/node_modules
+/assets/admin/
+/assets/website/
+/assets/custom.js
+/images
+/uploads
+/storage/
+/.idea
+/vendor

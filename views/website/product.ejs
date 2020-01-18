@@ -1,0 +1,213 @@
+<%- include('include/header'); %>
+<link rel="stylesheet" type="text/css" href="/assets/website/styles/product.css">
+<link rel="stylesheet" type="text/css" href="/assets/website/styles/product_responsive.css">
+</head>
+
+<body>
+<div class="super_container">
+
+    <%- include('include/navbar'); %>
+    <%- include('include/slider'); %>
+
+
+    <!-- Home -->
+
+    <div class="home">
+        <div class="parallax_background parallax-window" data-parallax="scroll"
+             data-image-src="/assets/website/images/product_background.jpg" data-speed="0.8"></div>
+        <div class="home_container">
+            <div class="home_content">
+                <div class="home_title">Shop</div>
+                <div class="breadcrumbs">
+                    <ul class="d-flex flex-row align-items-center justify-content-start">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/categories">Woman</a></li>
+                        <li><a href="/categories">Accessories</a></li>
+                        <li>Shoulder Bag</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Products -->
+
+    <div class="product">
+
+        <!-- Sorting & Filtering -->
+        <div class="products_bar">
+            <div class="section_container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="products_bar_content d-flex flex-row align-items-center justify-content-start">
+                                <div class="product_categories">
+                                    <ul class="d-flex flex-row align-items-start justify-content-start flex-wrap">
+                                        <li class="active"><a href="#">All</a></li>
+                                        <li><a href="#">Hot Products</a></li>
+                                        <li><a href="#">New Products</a></li>
+                                        <li><a href="#">Sale Products</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Content -->
+        <div class="section_container">
+            <div class="container">
+                <div class="row">
+                    <% if(!product) { %>
+                        <div class="product_image_row">
+                            <div class="product_image_3 product_image"><img
+                                        src="/assets/website/default.jpg" alt=""></div>
+                        </div>
+
+                    <% } else { %>
+                            <div class="col">
+                                <div class="product_content_container d-flex flex-lg-row flex-column align-items-start justify-content-start">
+                                    <div class="product_content order-lg-1 order-2">
+                                        <div class="product_content_inner">
+                                            <div class="product_image_row d-flex flex-md-row flex-column align-items-md-end align-items-start justify-content-start">
+                                                <% if(product.image[0] !== '') { %>
+                                                    <div class="product_image_1 product_image">
+                                                        <img src="<%= product.image[0] %>" alt="">
+                                                    </div>
+                                                <% } %>
+                                                <% if(product.image[1] !== '') { %>
+                                                    <div class="product_image_2 product_image"><img
+                                                                src="<%= product.image[1] %>" alt=""></div>
+                                            </div>
+                                            <% } %>
+                                            <% if(product.image[2] !== '') { %>
+                                                <div class="product_image_row">
+                                                    <div class="product_image_3 product_image"><img
+                                                                src="<%= product.image[2] %>" alt=""></div>
+                                                </div>
+                                            <% } %>
+
+                                            <% if(product.image[3] !== '') { %>
+                                                <div class="product_image_row d-flex flex-md-row flex-column align-items-start justify-content-start">
+                                                    <% for (let i = 3; i < product.image.length;i++){ %>
+                                                        <div class="product_image_4 product_image"><img
+                                                                    src="<%= product.image[i] %>" alt=""></div>
+
+                                                        <% if(i == 6) { break; %>
+
+                                                        <% } %>
+                                                    <% } %>
+                                                </div>
+
+                                            <% } %>
+
+                                            <% if(product.image[6] !== '') { %>
+                                                <div class="product_image_row d-flex flex-md-row flex-column align-items-start justify-content-start">
+                                                    <% for (let i = 6; i < product.image.length;i++){ %>
+                                                        <div class="product_image_4 product_image"><img
+                                                                    src="<%= product.image[i] %>" alt=""></div>
+                                                    <% } %>
+                                                </div>
+                                            <% } %>
+
+                                        </div>
+                                    </div>
+                                    <div class="product_sidebar order-lg-2 order-1">
+                                        <form action="/cart/add"  method="post" id="product_form" class="product_form">
+                                            <input type="hidden" name="product_id" value="<%= product._id %>">
+                                            <input type="hidden" name="name" value="<%= product.name %>">
+                                            <input type="hidden" name="image" value="<%= product.image[0] %>">
+                                            <input type="hidden" name="price" value="<%= product.price %>">
+                                            <input type="hidden" name="redirectTo" value="/cart">
+                                            <div class="product_name"> <%= product.name %> </div>
+                                            <div class="product_price">$<%= product.price %></div>
+
+                                            <% if(product.size.length > 0) { %>
+                                                <div class="product_size">
+                                                    <div class="product_size_title">Select Size</div>
+                                                    <div class="product_size_list">
+                                                        <ul>
+                                                            <% for ( let i = 0 ;i < product.size.length; i++ ) { %>
+                                                                <li class="size_available">
+                                                                    <input type="radio" value="<%= product.size[i] %>"
+                                                                           id="radio_size_<%= i + 1 %>" name="size"
+                                                                           class="regular_radio radio_<%= i + 1 %>"
+                                                                    checked>
+                                                                    <label for="radio_size_<%= i + 1 %>"> <%= product.size[i] %> </label>
+                                                                </li>
+                                                            <% } %>
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            <% } %>
+
+                                            <% if(product.color.length > 0) { %>
+                                                <div class="product_size">
+                                                    <div class="product_size_title">Select Color</div>
+                                                    <div class="product_size_list">
+                                                        <ul>
+                                                            <% for ( let i = 0 ;i < product.color.length; i++ ) { %>
+                                                                <li class="size_available">
+                                                                    <input type="radio" value="<%= product.color[i] %>"
+                                                                           id="radio_color_<%= i + 1 %>"
+                                                                           name="color"
+                                                                           class="regular_radio radio_<%= i + 1 %>"
+                                                                           checked
+                                                                    >
+                                                                    <label for="radio_color_<%= i + 1 %>"> <%= product.color[i] %> </label>
+                                                                </li>
+                                                            <% } %>
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            <% } %>
+
+                                            <div class="product_quantity_container">
+                                                <div class="product_size_title">Quantity</div>
+
+                                                <div class="product_quantity ml-lg-auto mr-lg-auto text-center">
+                                                    <span class="product_text product_num">1</span>
+                                                    <input  type="hidden" min="1" id="input_amount" value="1" name="amount">
+                                                    <div class="qty_sub qty_button trans_200 text-center"><span>-</span></div>
+                                                    <div class="qty_add qty_button trans_200 text-center"><span>+</span></div>
+                                                </div>
+                                            </div>
+
+                                            <button class="cart_button trans_200">add to cart</button>
+                                            <div class="similar_products_button trans_200"><a href="/categories">see similar
+                                                    products</a></div>
+                                        </form>
+                                        <div class="product_links">
+                                            <ul class="text-center">
+                                                <li><a href="#">See guide</a></li>
+                                                <li><a href="#">Shipping</a></li>
+                                                <li><a href="#">Returns</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    <% } %>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <%- include('include/footer'); %>
+
+
+    <script src="/assets/website/plugins/Isotope/fitcolumns.js"></script>
+    <script src="/assets/website/js/product.js"></script>
+    <script src="/assets/website/js/cart.js"></script>
+</body>
+</html>
+
+
+

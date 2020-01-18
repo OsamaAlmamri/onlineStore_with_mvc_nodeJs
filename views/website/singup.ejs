@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Awesome Login Page</title>
+    <link rel="stylesheet" type="text/css" href="/assets/website/styles/bootstrap-4.1.3/bootstrap.css">
+    <link href="/assets/website/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/assets/website/styles/osama/login.css" rel="stylesheet" type="text/css">
+
+    <style>
+        .custom_alert{
+            margin-top: -17px;
+            margin-bottom: 7px;
+            padding: 3px;
+            padding-left: 37px;
+        }
+    </style>
+</head>
+<!--Coded with love by Mutiullah Samim-->
+
+<body>
+<div class="container h-100">
+
+        <% let usernameError=errors.find(err=>err.param=='username')
+        let emailError=errors.find(err=>err.param=='email')
+        let passwordError=errors.find(err=>err.param=='password')
+        let confirmPasswordError=errors.find(err=>err.param=='conformPassword')
+        let phoneError=errors.find(err=>err.param=='phone')%>
+
+    <div class="d-flex justify-content-center h-100">
+        <div class="user_card">
+            <div class="d-flex justify-content-center">
+                <div class="brand_logo_container">
+                    <img src="/assets/website/default_login.jpg" class="brand_logo" alt="Logo">
+                </div>
+            </div>
+            <div class="d-flex justify-content-center form_container">
+                <form action="/singUp" method="post">
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                        </div>
+                        <input type="text" name="username" class="form-control input_user <% if(usernameError){ %> alert alert-danger<%}%>" value="" placeholder="username">
+                    </div>
+                    <% if(usernameError){ %>
+                        <div class=" custom_alert" >
+                                <strong>*</strong><%= usernameError.msg %> <br>
+                        </div>
+                    <% } %>
+
+
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                        </div>
+                        <input type="email" name="email" class="form-control input_pass <% if(emailError){ %> alert alert-danger<%}%> " value="<% if(phoneError){phoneError.value} %>" placeholder="email">
+                    </div>
+                    <% if(emailError){ %>
+                        <div class=" custom_alert" >
+                            <strong>*</strong><%= emailError.msg %> <br>
+                        </div>
+                    <% } %>
+
+
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-key"></i></span>
+                        </div>
+                        <input type="password" name="password" class="form-control input_pass<% if(passwordError){ %> alert alert-danger<%}%>" value="" placeholder="password">
+                    </div>
+                    <% if(passwordError){ %>
+                        <div class="custom_alert" >
+                            <strong>*</strong><%= passwordError.msg %> <br>
+                        </div>
+                    <% } %>
+
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-key"></i></span>
+                        </div>
+                        <input type="password" name="conformPassword" class="form-control input_pass<% if(confirmPasswordError){ %> alert alert-danger<%}%> " value="" placeholder="conform password">
+                    </div>
+                    <% if(confirmPasswordError){ %>
+                        <div class=" custom_alert" >
+                            <strong>*</strong><%= confirmPasswordError.msg %> <br>
+                        </div>
+                    <% } %>
+
+
+                    <div class="input-group mb-2">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                        </div>
+                        <input type="text" name="phone" class="form-control input_pass <% if(phoneError){ %> alert alert-danger<%}%>" value=""  placeholder="phone">
+                    </div>
+                    <% if(phoneError){ %>
+                        <div class=" custom_alert" >
+                            <strong>*</strong><%= phoneError.msg %> <br>
+                        </div>
+                    <% } %>
+
+                    <div class="d-flex justify-content-center mt-3 login_container">
+                        <input type="submit"  value="SinUp"  class="btn login_btn"/>
+                    </div>
+                </form>
+            </div>
+
+            <div class="mt-4">
+                <div class="d-flex justify-content-center links">
+                    Do You have an account? <a href="/login" class="ml-2">LogIn</a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

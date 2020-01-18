@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <!-- /header content -->
+    <%- include('./../includes/header'); %>
+
+
+    <!-- bootstrap-wysiwyg -->
+    <link href="/assets/admin/vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
+    <!-- Select2 -->
+    <link href="/assets/admin/vendors/select2/dist/css/select2.min.css" rel="stylesheet">
+    <!-- Switchery -->
+    <link href="/assets/admin/vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+    <!-- starrr -->
+    <link href="/assets/admin/vendors/starrr/dist/starrr.css" rel="stylesheet">
+
+    <!-- Dropzone.js -->
+    <link href="/assets/admin/vendors/dropzone/dist/min/dropzone.min.css" rel="stylesheet">
+
+
+    <!-- Custom Theme Style -->
+    <link href="/assets/admin/build/css/custom.min.css" rel="stylesheet">
+    <!-- /header content -->
+</head>
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+
+        <!-- menu start -->
+        <%- include('./../includes/menu'); %>
+        <!-- menu end -->
+
+        <!-- top navigation -->
+        <%- include('./../includes/topNavigation'); %>
+        <!-- /top navigation -->
+        <!-- /header content -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+            <div class="">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>المنتجات
+                            <small> التحكم بالمنتجات</small>
+                        </h3>
+                    </div>
+
+                    <div class="title_right">
+                        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder=" اكتب النص...">
+                                <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">بحث!</button>
+                    </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="row">
+
+<!--                    <div class="col-md-12 col-sm-12 col-xs-12">-->
+<!--                        <div class="x_panel">-->
+<!--                            <div class="x_title">-->
+<!--                                <h2>Dropzone صور المنتج </h2>-->
+<!--                                <ul class="nav navbar-right panel_toolbox">-->
+<!--                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>-->
+<!--                                    </li>-->
+<!--                                    <li class="dropdown">-->
+<!--                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"-->
+<!--                                           aria-expanded="false"><i class="fa fa-wrench"></i></a>-->
+<!--                                        <ul class="dropdown-menu" role="menu">-->
+<!--                                            <li><a href="#">تنظیمات 1</a>-->
+<!--                                            </li>-->
+<!--                                            <li><a href="#">تنظیمات 2</a>-->
+<!--                                            </li>-->
+<!--                                        </ul>-->
+<!--                                    </li>-->
+<!--                                    <li><a class="close-link"><i class="fa fa-close"></i></a>-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                                <div class="clearfix"></div>-->
+<!--                            </div>-->
+<!--                            <div class="x_content">-->
+<!--                                <p>اضافة صور للمنتج </p>-->
+
+<!--                                <form id="my-awesome-dropzone" action="" method="post" enctype="multipart/form-data" class="dropzone">-->
+<!--                                    <div class="fallback">-->
+<!--                                        <input name="source_file[]" type="file" multiple="multiple"/>-->
+<!--                                    </div>-->
+<!--                                    <div class="form-group pull-right">-->
+<!--                                        <button id="batch-upload" type="submit" class="btn btn-danger">Upload Now! </button>-->
+<!--                                    </div>-->
+<!--                                </form>-->
+<!--                                <br/>-->
+<!--                                <br/>-->
+<!--                                <br/>-->
+<!--                                <br/>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+
+                    <div class="col-md-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>المنتجات
+                                    <small>اضافة منتج</small>
+                                </h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                           aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="#">تنظیمات 1</a>
+                                            </li>
+                                            <li><a href="#">تنظیمات 2</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <br/>
+
+                                <form id="my-awesome-dropzone" action="" method="post" enctype="multipart/form-data" class="dropzone">
+                                    <div class="fallback">
+                                        <input name="source_file[]" type="file" multiple="multiple"/>
+                                    </div>
+                                    <div class="form-group pull-right">
+                                        <button id="batch-upload" type="submit" class="btn btn-danger">Upload Now! </button>
+                                    </div>
+                                </form>
+
+                                <!-- start form for validation -->
+                                <form id="demo-form" method="post" action="/admin/product/add" data-parsley-validate>
+                                    <div id="my_uploded_images" >
+
+                                    </div>
+                                    <label for="fullname">الاسم <span class="required">*</span> :</label>
+                                    <input type="text" id="fullname" class="form-control" name="name" required/>
+
+                                    <div class="control-group">
+                                        <label class="control-label col-md-12 col-sm-12 col-xs-12"> اللاوان
+                                            المتوفرة</label>
+                                        <div class="col-md-12 col-sm-2 col-xs-12">
+                                            <input id="tags_1" name='colors' type="text" class="tags form-control"
+                                                   value="ابيض,اسود"/>
+                                            <div id="suggestions-container"
+                                                 style="position: relative; float: left; width: 250px; margin: 10px;"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="control-group">
+                                        <label class="control-label col-md-12 col-sm-12 col-xs-12"> الاحجام
+                                            المتوفرة</label>
+                                        <div class="col-md-12 col-sm-2 col-xs-12">
+                                            <input id="tags_2" name='size' type="text" class="tags form-control"
+                                                   value="كبير,صغير"/>
+                                            <div id="suggestions-container"
+                                                 style="position: relative; float: left; width: 250px; margin: 10px;"></div>
+                                        </div>
+                                    </div>
+
+
+                                    <label>الصنف :</label>
+                                    <p style="padding: 5px;">
+
+                                    <div class="checkbox-inline">
+                                        <input type="checkbox" name="category[]" id="hobby1" value="رجالي"
+                                               class="flat"/>
+                                        <span class="checkbox_span">رجالي </span>
+
+                                    </div>
+
+                                    <div class="checkbox-inline">
+                                        <input type="checkbox" name="category[]" id="hobby2" value="نسائي"
+                                               class="flat"/>
+                                        <span class="checkbox_span">نسائي </span>
+
+                                    </div>
+
+                                    <div class="checkbox-inline">
+                                        <input type="checkbox" name="category[]" id="hobby3" value="اطفال"
+                                               class="flat"/>
+                                        <span class="checkbox_span">اطفال </span>
+
+                                    </div>
+
+
+                                    <br/>
+
+                                    <br/>
+
+                                    <label>الصنف الفرعي :</label>
+                                    <div style="padding: 5px;" class="row">
+
+                                        <div class="checkbox-inline">
+                                            <input type="checkbox" name="sub_category[]" id="sub_category1"
+                                                   value="ملابس"
+                                                   data-parsley-mincheck="1" required class="flat"/>
+                                            <span class="checkbox_span">ملابس </span>
+
+                                        </div>
+
+                                        <div class="checkbox-inline">
+                                            <input type="checkbox" name="sub_category[]" id="sub_category2" value="احذية"
+                                                   class="flat"/>
+                                            <span class="checkbox_span">احذية </span>
+
+                                        </div>
+
+                                        <div class="checkbox-inline">
+                                            <input type="checkbox" name="sub_category[]" id="sub_category3"
+                                                   value="اكسسوارات"
+                                                   class="flat"/>
+                                            <span class="checkbox_span">اكسسوارات </span>
+
+
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <div class="control-group col-md-6 ">
+                                        <label for="price">سعر البيع <span class="required">*</span> :</label>
+                                        <input type="number" id="price" class="form-control" name="price" required/>
+
+                                    </div>
+                                    <div class="control-group col-md-6 ">
+                                        <label for="consumer_price">سعر الشراء <span class="required">*</span> :</label>
+                                        <input type="number" id="consumer_price" class="form-control"
+                                               name="consumer_price" required/>
+                                        <br>
+                                    </div>
+                                    <br>
+                                    <br>
+
+
+                                    <label for="message">الوصف باللغة العربية :</label>
+                                    <textarea id="message" required="required" class="form-control" name="description_ar"
+                                              data-parsley-trigger="keyup" data-parsley-minlength="20"
+                                              data-parsley-maxlength="300"
+                                              data-parsley-minlength-message=" الوصف يجب ان يكون اكثر من 20 حرف... "
+                                              data-parsley-maxlength-message=" الوصف يجب ان يكون اقل من 300 حرف... "
+                                              data-parsley-validation-threshold="10"></textarea>
+
+                                    <br/>
+
+
+                                    <label for="message">الوصف باللغة النجليزية :</label>
+                                    <textarea id="message" required="required" class="form-control" name="description_en"
+                                              data-parsley-trigger="keyup" data-parsley-minlength="20"
+                                              data-parsley-maxlength="300"
+                                              data-parsley-minlength-message=" الوصف يجب ان يكون اكثر من 20 حرف... "
+                                              data-parsley-maxlength-message=" الوصف يجب ان يكون اقل من 300 حرف... "
+                                              data-parsley-validation-threshold="20"></textarea>
+
+                                    <br/>
+
+
+                                    <button type="submit" class="btn btn-primary">اضافة</button>
+
+                                </form>
+                                <!-- end form for validations -->
+
+                                </form>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <!-- /page content -->
+
+
+            <!-- footer content -->
+            <%- include('./../includes/footer'); %>
+
+            <!-- /footer content -->
+        </div>
+    </div>
+
+
+    <!-- lock_screen start -->
+    <%- include('./../includes/lock_screen'); %>
+
+    <!-- lock_screen end -->
+
+
+    <!-- start footer  links -->
+    <%- include('./../includes/footer_links'); %>
+    <!-- end footer  links -->
+
+
+    <!-- bootstrap-wysiwyg -->
+    <script src="/assets/admin/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
+    <script src="/assets/admin/vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
+    <script src="/assets/admin/vendors/google-code-prettify/src/prettify.js"></script>
+    <!-- jQuery Tags Input -->
+    <script src="/assets/admin/vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
+    <!-- Switchery -->
+    <script src="/assets/admin/vendors/switchery/dist/switchery.min.js"></script>
+    <!-- Select2 -->
+    <script src="/assets/admin/vendors/select2/dist/js/select2.full.min.js"></script>
+    <!-- Parsley -->
+    <script src="/assets/admin/vendors/parsleyjs/dist/parsley.min.js"></script>
+    <script src="/assets/admin/vendors/parsleyjs/dist/i18n/ar.js"></script>
+    <!-- Autosize -->
+    <script src="/assets/admin/vendors/autosize/dist/autosize.min.js"></script>
+    <!-- jQuery autocomplete -->
+    <script src="/assets/admin/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
+    <!-- starrr -->
+    <script src="/assets/admin/vendors/starrr/dist/starrr.js"></script>
+
+    <!-- Dropzone.js -->
+    <script src="/assets/admin/vendors/dropzone/dist/min/dropzone.min.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="/assets/admin/build/js/osamaCustom/addProduct.js"></script>
+    <script src="/assets/admin/build/js/custom.js"></script>
+
+
+    <script>
+
+
+        Dropzone.options.myAwesomeDropzone = {
+            url:'/admin/product/addImages',
+            autoProcessQueue: false,
+            //paramName:'source_file', // Name used to transfer the file(s) (will have '[i=0,1,2,3,4...]' appended)
+            paramName: function(n) { return 'source_file[]';},  // Don't enumerate the transfers
+            uploadMultiple: true,
+            parallelUploads: 12,  // default is 2
+            //maxFilesize: 2, // MB
+            addRemoveLinks: true,
+                acceptedFiles:'image/*',
+                dictDefaultMessage: "اسحب الملفات هنا للتحميل ",
+                dictFallbackMessage: "متصفحك لا يدعم سحب واسقاط الملفات",
+                dictFallbackText:"يرجى استخدام نموذج fallback أدناه لتحميل ملفاتك كما في الأيام القادمة ..",
+                dictFileTooBig: "الملف كبير جدا  ({{filesize}}MiB). اقصى حجم للملف هو : {{maxFilesize}}MiB.",
+                dictInvalidFileType: "لا يمكن تحميل ملف بهذا الامتداد ",
+                dictResponseError: "Server responded with {{statusCode}} code.",
+                dictCancelUpload: "الغاء التحميل ",
+                dictCancelUploadConfirmation: "آیا مطمئن هستید که میخواهید این آپلود را لغو کنید؟",
+                dictRemoveFile: "حذف الملف",
+                dictRemoveFileConfirmation: " هل أنت متأكد من أنك تريد حذف هذا الملف؟",
+                dictMaxFilesExceeded: "لا يمكنك تحميل أي ملفات أخرى.",
+
+
+            init: function() {
+                var myDropzone = this;
+                this.on("completemultiple", function(files, response) {  // was queuecomplete
+                    // console.log("Complete!");
+                    console.log(response);
+                    images=JSON.parse(files[0].xhr.response).data
+                    console.log(images);
+                    for ( image of images)
+                    {
+                        console.log(image);
+                        $('#my_uploded_images').html($('#my_uploded_images').html()+
+                       '<input type="text" readonly name="images[]" value="'+image+'" >'
+                        )
+                    //
+
+                    }
+
+                    // Now reload page...
+                    // location.reload(true);  // true => force server reload
+                    $('#batch-upload').hide();
+
+
+                });
+
+                this.on("addedfile", function() {
+                    console.log("Added File! - show the upload button");
+                    $('#batch-upload').show();
+                });
+
+                $('#batch-upload').click( function(e) {
+                    console.log("Clicked on upload button"); // , e.target.href
+
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    myDropzone.processQueue();
+                }).hide();
+
+            }
+
+        };
+
+        // Dropzone.options.myAwesomeDropzone = {
+        //     url: '/admin/product/addImages',
+        //     paramName: "files", // The name that will be used to transfer the file
+        //     maxFilesize: 2, // MB
+        //     // accept: function (file, done) {
+        //     //     if (file.name == "justinbieber.jpg") {
+        //     //         done("Naha, you don't.");
+        //     //     } else {
+        //     //         done();
+        //     //     }
+        //     // },
+        //     // headers: {
+        //     //             'x-csrf-token': document.querySelectorAll('meta[name=csrf-token]')[0].getAttributeNode('content').value,
+        //     //         },
+        //     addRemoveLinks: true,
+        //     acceptedFiles:'image/*',
+        //     dictDefaultMessage: "اسحب الملفات هنا للتحميل ",
+        //     dictFallbackMessage: "متصفحك لا يدعم سحب واسقاط الملفات",
+        //     dictFallbackText:"يرجى استخدام نموذج fallback أدناه لتحميل ملفاتك كما في الأيام القادمة ..",
+        //     dictFileTooBig: "الملف كبير جدا  ({{filesize}}MiB). اقصى حجم للملف هو : {{maxFilesize}}MiB.",
+        //     dictInvalidFileType: "لا يمكن تحميل ملف بهذا الامتداد ",
+        //     dictResponseError: "Server responded with {{statusCode}} code.",
+        //     dictCancelUpload: "الغاء التحميل ",
+        //     dictCancelUploadConfirmation: "آیا مطمئن هستید که میخواهید این آپلود را لغو کنید؟",
+        //     dictRemoveFile: "حذف الملف",
+        //     dictRemoveFileConfirmation: " هل أنت متأكد من أنك تريد إلغاء هذا التحميل؟",
+        //     dictMaxFilesExceeded: "لا يمكنك تحميل أي ملفات أخرى."
+        // }
+
+
+    </script>
+
+</body>
+</html>
