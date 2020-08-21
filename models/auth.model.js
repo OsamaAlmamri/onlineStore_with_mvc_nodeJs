@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const dbURL = 'mongodb://localhost:27017/online-shop';
 const Cryptr = require('cryptr');
 const cryptr = new Cryptr('myTotalySecretKey');
-
 const encryptedString = cryptr.encrypt('bacon');
 // const decryptedString = cryptr.decrypt(encryptedString);
 
@@ -61,8 +60,6 @@ exports.login = (email, password) => {
         })
     })
 }
-
-
 exports.createNewUser = (username, email, password, phone) => {
     return new Promise((resolve, reject) => {
         mongoose.connect(dbURL).then(() => {
